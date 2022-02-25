@@ -1,0 +1,12 @@
+const myList = [];
+const sub1 = ["Perro",16];
+const sub2 = ["Gato",12];
+const sub3 = ["Loro",40];
+const sub4 = ["Pez",30];
+const sub5 = ["Caballo",20];
+
+myList.push(sub1);
+myList.push(sub2);
+myList.push(sub3);
+myList.push(sub4);
+myList.push(sub5);

@@ -1,0 +1,17 @@
+class StatefulComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    // Cambia solo el código debajo de esta línea
+    this.state = {
+      name: "Nicki"
+    }
+    // Cambia solo el código encima de esta línea
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};

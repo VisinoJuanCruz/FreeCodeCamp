@@ -1,0 +1,14 @@
+<body>
+  <ul>
+    <li>Example</li>
+    <li>Example</li>
+    <li>Example</li>
+  </ul>
+  <script>
+    // Agrega tu código debajo de esta línea
+
+    const anchors = d3.selectAll('li').text('list item')
+
+    // Agrega tu código encima de esta línea
+  </script>
+</body>

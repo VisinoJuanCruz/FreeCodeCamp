@@ -1,0 +1,10 @@
+// Cambia solo el código debajo de esta línea
+function urlSlug(title) {
+
+  console.log(title.toLowerCase().split(" ").filter(substr => substr !=="").join("-"));
+  
+  return title.toLowerCase().split(" ").filter(substr => substr !=="").join("-");
+
+}
+// Cambia solo el código encima de esta línea
+urlSlug(" Winter Is  Coming");

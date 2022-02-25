@@ -1,0 +1,13 @@
+const globalArray = [5, 6, 3, 2, 9];
+
+function nonMutatingSort(arr) {
+  // Cambia solo el código debajo de esta línea
+  let arrAux = arr.slice();
+  arrAux.sort(function(a , b){
+    return a > b;
+  })
+  return arrAux;
+  // Cambia solo el código encima de esta línea
+}
+
+console.log(nonMutatingSort(globalArray));

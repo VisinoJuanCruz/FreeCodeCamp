@@ -1,0 +1,11 @@
+const state = [];
+
+// Cambia el código debajo de esta línea
+
+function mapStateToProps(state){
+
+  return({
+    messages: state
+  });
+
+} ;

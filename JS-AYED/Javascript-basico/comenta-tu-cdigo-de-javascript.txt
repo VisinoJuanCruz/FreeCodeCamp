@@ -1,0 +1,7 @@
+//coment inline
+
+/* 
+  coment
+  block
+
+*/

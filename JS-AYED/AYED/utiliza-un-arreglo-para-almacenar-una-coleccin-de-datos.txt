@@ -1,0 +1,2 @@
+let yourArray = [1,2,3,4,5,false,"hola"]; // Cambia esta línea
+

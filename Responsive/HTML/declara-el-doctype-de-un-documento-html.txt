@@ -1,0 +1,4 @@
+<!DOCTYPE html>
+<html>
+  <h1>Cualquier texto</h1>
+  </html>

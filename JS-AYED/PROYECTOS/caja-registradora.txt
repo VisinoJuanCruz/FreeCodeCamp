@@ -1,0 +1,204 @@
+/*function round(num) {
+    var m = Number((Math.abs(num) * 100).toPrecision(15));
+    return Math.round(m) / 100 * Math.sign(num);
+}
+
+
+
+function checkCashRegister(price, cash, cid) {
+  
+  let dineroCaja = 0;
+  let vuelto = cash - price;
+  
+  
+
+
+  for (let i = 0; i < cid.length; i++){
+    dineroCaja +=cid[i][1];
+    
+  }
+  if(dineroCaja < (cash-price)){
+    return {
+      status:"INSUFFICIENT_FUNDS",
+      change:[],
+    }
+  }else{
+
+    let vueltoArr = [];
+    let dictCaja = {};
+    let moneda =0;
+    for (let i = 0; i < cid.length; i++){
+      dictCaja[cid[i][0]] = cid[i][1];
+    }
+    
+    while(vuelto !== 0){
+      console.log(vuelto);
+      moneda = 0;
+      while((vuelto >= 100) && (dictCaja["ONE HUNDRED"] !== 0)){
+          moneda += 100;
+          vuelto -= 100;
+          dictCaja["ONE HUNDRED"] = dictCaja["ONE HUNDRED"] -100;
+      }
+      
+      if(moneda !== 0){
+        vueltoArr.push(["ONE HUNDRED",moneda]);
+        moneda = 0;
+      }
+      while((vuelto >= 20) && (vuelto !== 0)&&(dictCaja["TWENTY"] !== 0)){
+        
+        if(dictCaja["TWENTY"] !== 0){
+          moneda +=20;
+          vuelto -= 20;
+          dictCaja["TWENTY"] = dictCaja["TWENTY"] -20;
+        }
+      }
+      if(moneda !== 0){
+      vueltoArr.push(["TWENTY",moneda]);
+      moneda = 0;
+      }
+      while((vuelto >= 10)&& (vuelto !== 0) && (dictCaja["TEN"] !== 0)){
+       
+        if(dictCaja["TEN"] !== 0){
+          moneda += 10;
+          vuelto -= 10;
+          dictCaja["TEN"] = dictCaja["TEN"] -10;
+        }
+      }
+      if(moneda !== 0){
+      vueltoArr.push(["TEN",moneda]);
+      moneda = 0;
+      }
+      while((vuelto >= 5)&& (vuelto !== 0) && (dictCaja["FIVE"] !== 0)){
+        
+        if(dictCaja["FIVE"] !== 0){
+          moneda += 5;
+          vuelto -= 5;
+          dictCaja["FIVE"] = dictCaja["FIVE"] -5;
+        }
+      }
+      if(moneda !== 0){
+      vueltoArr.push(["FIVE",moneda]);
+      moneda = 0;
+      }
+      while((vuelto >= 1)&& (vuelto !== 0) && (dictCaja["ONE"] !== 0)){
+         
+        if(dictCaja["ONE"] !== 0){
+          moneda += 1;
+          vuelto -= 1;
+          dictCaja["ONE"] = dictCaja["ONE"] -1;
+        }
+      }
+      if(moneda !== 0){
+      vueltoArr.push(["ONE",moneda]);
+      moneda = 0;
+      }
+      while((vuelto >= 0.25)&&(dictCaja["QUARTER"] !== 0)){
+        
+        if(dictCaja["QUARTER"] !== 0){
+          moneda += 0.25;
+          vuelto -= 0.25;
+          dictCaja["QUARTER"] = dictCaja["QUARTER"] -0.25;
+        }
+      }
+      if(moneda !== 0){
+        vueltoArr.push(["QUARTER",moneda]);
+        moneda = 0;
+      }
+      while((vuelto >= 0.1)&& (vuelto !== 0) &&(dictCaja["DIME"] !== 0)){
+        
+        if(dictCaja["DIME"] !== 0){
+          moneda += 0.1;
+          vuelto -= 0.1;
+          dictCaja["DIME"] = dictCaja["DIME"] -0.1;
+        }
+      }
+      if(moneda !== 0){
+        vueltoArr.push(["DIME",moneda]);
+        moneda = 0;
+      }
+      while((vuelto >= 0.05)&& (vuelto !== 0)&& (dictCaja["NICKEL"] !== 0)){
+        
+        if(dictCaja["NICKEL"] !== 0){
+          moneda +=0.05;
+          vuelto -= 0.05;
+          dictCaja["NICKEL"] = dictCaja["NICKEL"] -0.05;
+        }
+      }
+      if(moneda !== 0){
+      vueltoArr.push(["NICKEL",moneda]);
+      moneda = 0;
+      }
+      while((vuelto >= 0.01)&& (vuelto.toFixed(2) !== 0)&&(dictCaja["PENNY"] !== 0)){
+        
+        if(dictCaja["PENNY"] !== 0){
+          moneda +=0.01;
+          vuelto -= 0.01;
+          vuelto = vuelto.toFixed(2);
+          
+          dictCaja["PENNY"] = dictCaja["PENNY"] -0.01;
+        }
+      }
+      if(moneda !== 0){
+      vueltoArr.push(["PENNY",moneda]);
+      }
+    }
+    console.log(vueltoArr);
+    return {
+      status:"OPEN",
+      change: vueltoArr,
+    }
+  }
+  
+  
+  */
+var denom = [
+	{ name: 'ONE HUNDRED', val: 100},
+	{ name: 'TWENTY', val: 20},
+	{ name: 'TEN', val: 10},
+	{ name: 'FIVE', val: 5},
+	{ name: 'ONE', val: 1},
+	{ name: 'QUARTER', val: 0.25},
+	{ name: 'DIME', val: 0.1},
+	{ name: 'NICKEL', val: 0.05},
+	{ name: 'PENNY', val: 0.01}
+];
+function checkCashRegister(price, cash, cid) {
+ var output = {status: null, change: []};
+ var change = cash - price;
+ var register = cid.reduce(function(acc, curr) {
+ acc.total += curr[1];
+ acc[curr[0]] = curr[1];
+ return acc;
+ }, {total: 0});
+ if(register.total === change) {
+ output.status = 'CLOSED';
+ output.change = cid;
+ return output;
+ }
+ if(register.total < change) {
+ output.status = 'INSUFFICIENT_FUNDS';
+ return output;
+ }
+ var change_arr = denom.reduce(function(acc, curr) {
+ var value = 0;
+ while(register[curr.name] > 0 && change >= curr.val) {
+ change -= curr.val;
+ register[curr.name] -= curr.val;
+ value += curr.val;
+ change = Math.round(change * 100) / 100;
+ }
+ if(value > 0) {
+ acc.push([ curr.name, value ]);
+ }
+ return acc;
+ }, []);
+ if(change_arr.length < 1 || change > 0) {
+ output.status = 'INSUFFICIENT_FUNDS';
+ return output;
+ }
+ output.status = 'OPEN';
+ output.change = change_arr;
+ return output;
+}
+
+checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])

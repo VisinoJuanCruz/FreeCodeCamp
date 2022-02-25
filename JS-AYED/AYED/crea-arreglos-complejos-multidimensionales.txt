@@ -1,0 +1,5 @@
+let myNestedArray = [ //nivel1
+  // Cambia solo el código debajo de esta línea
+  1,[2,['deep',['deeper',['deepest']]]]
+  // Cambia solo el código encima de esta línea
+];

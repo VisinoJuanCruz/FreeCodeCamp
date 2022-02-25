@@ -1,0 +1,16 @@
+function sumAll(arr) {
+  arr.sort(function(a,b){
+    return a > b;
+  });
+  
+  let total= 0;
+  
+  for(let i = arr[0]; i <= arr[arr.length-1]; i++){
+    
+    total += i;
+  }
+  
+return total;
+}
+
+sumAll([1, 4,10,3]);

@@ -1,0 +1,30 @@
+// La variable global
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+// Cambia el código debajo de esta línea
+function add (arr,bookName) {
+
+ 
+  return [...arr,bookName];
+
+  // Cambia el código encima de esta línea
+}
+
+// Cambia el código debajo de esta línea
+function remove (arr,bookName) {
+  const book_index = bookList.indexOf(bookName);
+  let arr1 = [...arr];
+  if (book_index >= 0) {
+
+    arr1.splice(book_index, 1);
+    return arr1;
+
+    // Cambia el código encima de esta línea
+    }
+}
+
+const newBookList = add(bookList, 'A Brief History of Time');
+const newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+const newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+
+console.log(bookList);

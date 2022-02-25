@@ -1,0 +1,18 @@
+
+
+let funModule = (function (){
+return {
+  isCuteMixin: function(obj){
+    obj.isCute = function(){
+      console.log("Is cute Mixin.");
+    };
+  },
+  singMixin: function(obj){
+    obj.sing = function(){
+      console.log("Is sing Mixin.");
+    };
+  }
+}
+
+
+})();

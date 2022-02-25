@@ -1,0 +1,84 @@
+function convertToRoman(num) {
+ 
+ let romanos= {
+
+   1:{
+     1:"I",
+     10:"X",
+     100:"C",
+     1000:"M",     
+   },
+   2:{
+     1:"II",
+     10:"XX",
+     100:"CC",
+     1000:"MM",
+   },
+   3:{
+     1:"III",
+     10:"XXX",
+     100:"CCC",
+     1000:"MMM",     
+   },
+   4:{
+     1:"IV",
+     10:"XL",
+     100:"CD", 
+     1000:"",   
+   },
+   5:{
+     1:"V",
+     10:"L",
+     100:"D", 
+     1000:"",    
+   },
+   6:{
+     1:"VI",
+     10:"LX",
+     100:"DC", 
+     1000:"",     
+   },
+   7:{
+     1:"VII",
+     10:"LXX",
+     100:"DCC", 
+     1000:"",    
+   },
+   8:{
+     1:"VIII",
+     10:"LXXX",
+     100:"DCCC", 
+     1000:"",    
+   },
+   9:{
+     1:"IX",
+     10:"XC",
+     100:"CM",
+     1000:"",    
+   },
+   0:{
+     1:"",
+     10:"",
+     100:"",
+     1000:"",
+   }
+   
+
+}
+
+let strRomano = "";
+for(let i = 1000; i >= 1;i /=10){
+  
+  //console.log(parseInt(num/i))
+  if(num / i !== 0){
+    strRomano += (romanos[parseInt(num/i)][i]);
+    num = num % i;
+    
+  }
+}
+
+return strRomano;
+
+}
+
+convertToRoman(1036);

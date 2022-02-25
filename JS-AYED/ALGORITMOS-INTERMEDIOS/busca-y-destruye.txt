@@ -1,0 +1,18 @@
+function destroyer(arr) {
+  
+  for (let i = 1; i < arguments.length; i++){
+    let index = arr.indexOf(arguments[i]);
+    while(index >= 0){
+      //index = arr.indexOf(arguments[i]);
+      arr.splice(index,1);
+      index = arr.indexOf(arguments[i]);
+    }
+    index = 0;
+  console.log(arr);
+  }
+  
+  
+  return arr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3); 
