@@ -1,0 +1,15 @@
+<script>
+  // Agrega tu código debajo de esta línea
+if (navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(function(position) {
+    document.getElementById('data').innerHTML="latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude;
+  });
+}
+
+
+  // Agrega tu código encima de esta línea
+</script>
+<h4>You are here:</h4>
+<div id="data">
+
+</div>
