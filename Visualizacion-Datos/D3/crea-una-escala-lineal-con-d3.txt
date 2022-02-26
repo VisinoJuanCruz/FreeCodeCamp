@@ -1,0 +1,16 @@
+<body>
+  <script>
+    // Agrega tu código debajo de esta línea
+
+    const scale = d3.scaleLinear(); // Crea la escala aquí
+    const output = scale(50); // Llama scale con un argumento aquí
+
+
+    // Agrega tu código encima de esta línea
+
+    d3.select("body")
+      .append("h2")
+      .text(output);
+
+  </script>
+</body>
